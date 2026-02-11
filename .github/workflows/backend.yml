@@ -3,37 +3,44 @@ name: Backend CI
 on:
   push:
     branches: ["main"]
+    paths:
+      - 'leavemate/**'   # change this if your backend folder name is different
 
 jobs:
   build-backend:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: ./leavemate   # ⭐ VERY IMPORTANT
+
     steps:
 
-    # Download code
-    - name: Checkout
+    # Checkout repository
+    - name: Checkout Code
       uses: actions/checkout@v4
 
 
-    # Install Java
+    # Setup Java
     - name: Setup JDK 17
       uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
         java-version: '17'
+        cache: maven   # ⭐ speeds up builds
 
 
-    # Give permission to mvnw
+    # Make mvnw executable
     - name: Grant permission
       run: chmod +x mvnw
 
 
-    # Build Spring Boot JAR
+    # Build JAR
     - name: Build with Maven
       run: ./mvnw clean package -DskipTests
 
 
-    # Verify JAR exists (VERY professional step)
+    # Confirm JAR exists
     - name: Check target folder
       run: ls target
 
