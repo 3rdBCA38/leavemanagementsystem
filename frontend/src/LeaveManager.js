@@ -11,12 +11,12 @@ function LeaveManager() {
   }, []);
 
   const fetchLeaves = () => {
-    axios.get("http://leavemate.onrender.com/leaves")
+    axios.get("https://leavemate.onrender.com/leaves")
       .then(res => setLeaves(res.data));
   };
 
   const addLeave = () => {
-    axios.post("http://localhost:8080/leaves", {
+    axios.post("https://leavemate.onrender.com/leaves", {
       employeeName: name,
       leaveType: type
     }).then(() => {
@@ -27,7 +27,7 @@ function LeaveManager() {
   };
 
   const deleteLeave = (id) => {
-    axios.delete(`http://localhost:8080/leaves/${id}`)
+    axios.delete(`https://leavemate.onrender.com/leaves/${id}`)
       .then(() => fetchLeaves());
   };
 
