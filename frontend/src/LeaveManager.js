@@ -11,7 +11,7 @@ function LeaveManager() {
   }, []);
 
   const fetchLeaves = () => {
-    axios.get("http://localhost:8080/leaves")
+    axios.get("http://leavemate.onrender.com/leaves")
       .then(res => setLeaves(res.data));
   };
 
