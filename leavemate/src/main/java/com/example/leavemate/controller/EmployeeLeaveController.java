@@ -9,8 +9,10 @@ import com.example.leavemate.model.EmployeeLeave;
 import com.example.leavemate.repository.EmployeeLeaveRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://leavemanagementsystem-sigma.vercel.app")
 @RequestMapping("/leaves")
+
+
 public class EmployeeLeaveController {
 
     @Autowired
