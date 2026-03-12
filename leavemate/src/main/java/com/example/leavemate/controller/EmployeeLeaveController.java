@@ -12,7 +12,6 @@ import com.example.leavemate.repository.EmployeeLeaveRepository;
 @CrossOrigin(origins = "https://leavemanagementsystem-sigma.vercel.app")
 @RequestMapping("/leaves")
 
-
 public class EmployeeLeaveController {
 
     @Autowired
