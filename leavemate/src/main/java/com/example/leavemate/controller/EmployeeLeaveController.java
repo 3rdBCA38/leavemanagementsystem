@@ -9,41 +9,41 @@ import com.example.leavemate.model.EmployeeLeave;
 import com.example.leavemate.repository.EmployeeLeaveRepository;
 
 @RestController
+@RequestMapping("/leaves")
+
 @CrossOrigin(origins = {
         "http://localhost:3000",
         "https://leavemanagementsystem-sigma.vercel.app"
-})
-@RequestMapping("/leaves")
+}, allowCredentials = "true")
 
 public class EmployeeLeaveController {
 
     @Autowired
     private EmployeeLeaveRepository repo;
 
-    // CREATE
+    // ✅ CREATE
     @PostMapping
     public EmployeeLeave addLeave(@RequestBody EmployeeLeave leave) {
         leave.setStatus("Pending");
         return repo.save(leave);
     }
 
-    // READ
+    // ✅ READ
     @GetMapping
     public List<EmployeeLeave> getAllLeaves() {
         return repo.findAll();
     }
 
-    // UPDATE
+    // ✅ UPDATE
     @PutMapping("/{id}")
     public EmployeeLeave updateLeave(@PathVariable Long id, @RequestBody EmployeeLeave leave) {
         leave.setId(id);
         return repo.save(leave);
     }
 
-    // DELETE
+    // ✅ DELETE
     @DeleteMapping("/{id}")
     public void deleteLeave(@PathVariable Long id) {
         repo.deleteById(id);
     }
-
 }
