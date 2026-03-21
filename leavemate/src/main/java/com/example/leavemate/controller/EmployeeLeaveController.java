@@ -11,11 +11,6 @@ import com.example.leavemate.repository.EmployeeLeaveRepository;
 @RestController
 @RequestMapping("/leaves")
 
-@CrossOrigin(origins = {
-        "http://localhost:3000",
-        "https://leavemanagementsystem-sigma.vercel.app"
-}, allowCredentials = "true")
-
 public class EmployeeLeaveController {
 
     @Autowired
