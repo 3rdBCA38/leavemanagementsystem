@@ -10,23 +10,24 @@ import com.example.leavemate.repository.EmployeeLeaveRepository;
 
 @RestController
 @RequestMapping("/leaves")
+@CrossOrigin(origins ="*")
 
 public class EmployeeLeaveController {
 
     @Autowired
     private EmployeeLeaveRepository repo;
 
+    // ✅ READ
+    @GetMapping
+    public List<EmployeeLeave> getAllLeaves() {
+        return repo.findAll();
+    }
+
     // ✅ CREATE
     @PostMapping
     public EmployeeLeave addLeave(@RequestBody EmployeeLeave leave) {
         leave.setStatus("Pending");
         return repo.save(leave);
-    }
-
-    // ✅ READ
-    @GetMapping
-    public List<EmployeeLeave> getAllLeaves() {
-        return repo.findAll();
     }
 
     // ✅ UPDATE
