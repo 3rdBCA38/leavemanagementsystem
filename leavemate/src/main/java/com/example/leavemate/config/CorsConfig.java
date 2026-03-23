@@ -2,8 +2,6 @@ package com.example.leavemate.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.*;
 
 @Configuration
@@ -19,10 +17,11 @@ public class CorsConfig {
                         .allowedOrigins(
                                 "http://localhost:3000",
                                 "https://leavemanagementsystem-sigma.vercel.app",
-                                "/**"
+                                "https://leave-frontend-hychakbkc2fegxfw.southeastasia-01.azurewebsites.net/" // 👉 your Azure frontend (change if needed)
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                        .allowedHeaders("*");
+                        .allowedHeaders("*")
+                        .allowCredentials(false);
             }
         };
     }
